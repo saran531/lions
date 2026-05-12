@@ -192,7 +192,7 @@ function About() {
               Leadership
             </p>
             <h2 className="text-[#081b3a] text-[42px] md:text-[38px] font-black">
-              Founder of LionGlobalServices
+             Founder of Lions Global Services ( <span className="text-[#ff7a00] text-[26px] md:text-[30px] align-middle">Mr Anbuselvan</span> )
             </h2>
           </div>
 

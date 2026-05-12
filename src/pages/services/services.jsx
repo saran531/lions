@@ -19,7 +19,10 @@ import SecurityImage from "./images/security.png";
 
 function Services() {
   return (
-    <div className="font-['Roboto'] bg-[#f5f7fb] overflow-x-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
+    <div
+      className="font-['Roboto'] bg-[#f5f7fb] overflow-x-hidden"
+      style={{ fontFamily: "Roboto, sans-serif" }}
+    >
       {/* HERO */}
       <section className="relative min-h-[320px] md:min-h-[500px] overflow-hidden flex items-center justify-center">
         <img
@@ -30,10 +33,8 @@ function Services() {
 
         <div className="absolute inset-0 bg-[#081b3a]/55"></div>
 
-      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center px-6">
-           
-
             <h1 className="relative text-white text-[46px] md:text-[64px] font-black leading-tight">
               Services
             </h1>
@@ -58,7 +59,6 @@ function Services() {
 
           <div className="grid lg:grid-cols-2 gap-10">
             <ServiceCard
-              bg="white"
               image={ScaffoldingImage}
               icon={<Building2 />}
               title="Scaffolding"
@@ -73,7 +73,6 @@ function Services() {
             />
 
             <ServiceCard
-              bg="white"
               image={SafetyImage}
               icon={<Shield />}
               title="Safety Catch Net"
@@ -88,7 +87,6 @@ function Services() {
             />
 
             <ServiceCard
-              bg="white"
               image={BuildingImage}
               icon={<Hammer />}
               title="Building Construction Works"
@@ -154,16 +152,16 @@ function Services() {
 function ServiceCard({ image, icon, title, text }) {
   return (
     <div className="group bg-white rounded-[36px] overflow-hidden shadow-2xl hover:-translate-y-2 duration-300">
-      <div className="grid md:grid-cols-2">
-        <div className="overflow-hidden">
-          <img
-            src={image}
-            className="w-full h-full object-cover duration-500 group-hover:scale-110"
-            alt={title}
-          />
-        </div>
+      <div className="grid md:grid-cols-2 min-h-[450px]">
+        <div className="overflow-hidden h-[512px] md:h-auto md:min-h-[512px]">
+  <img
+    src={image}
+    className="w-full h-full object-cover duration-500 group-hover:scale-110"
+    alt={title}
+  />
+</div>
 
-        <div className="p-10">
+        <div className="p-10 flex flex-col justify-center">
           <div className="w-[75px] h-[75px] rounded-[24px] bg-[#ff7a00] flex items-center justify-center mb-7 text-white">
             {icon}
           </div>
@@ -184,8 +182,8 @@ function ServiceCard({ image, icon, title, text }) {
 function ServiceCardDark({ image, icon, title, text }) {
   return (
     <div className="group bg-[#081b3a] rounded-[36px] overflow-hidden shadow-2xl hover:-translate-y-2 duration-300">
-      <div className="grid md:grid-cols-2">
-        <div className="p-10 order-2 md:order-1">
+      <div className="grid md:grid-cols-2 min-h-[450px]">
+        <div className="p-10 order-2 md:order-1 flex flex-col justify-center">
           <div className="w-[75px] h-[75px] rounded-[24px] bg-[#ff7a00] flex items-center justify-center mb-7 text-white">
             {icon}
           </div>
@@ -199,13 +197,13 @@ function ServiceCardDark({ image, icon, title, text }) {
           </p>
         </div>
 
-        <div className="overflow-hidden order-1 md:order-2">
-          <img
-            src={image}
-            className="w-full h-full object-cover duration-500 group-hover:scale-110"
-            alt={title}
-          />
-        </div>
+       <div className="overflow-hidden order-1 md:order-2 h-[512px] md:h-auto md:min-h-[512px]">
+  <img
+    src={image}
+    className="w-full h-full object-cover duration-500 group-hover:scale-110"
+    alt={title}
+  />
+</div>
       </div>
     </div>
   );
@@ -214,17 +212,11 @@ function ServiceCardDark({ image, icon, title, text }) {
 function WhyCard({ icon, title, text }) {
   return (
     <div className="bg-white/10 backdrop-blur-md rounded-[30px] p-8 border border-white/10">
-      <div className="text-[#ff7a00] w-11 h-11 mb-6">
-        {icon}
-      </div>
+      <div className="text-[#ff7a00] w-11 h-11 mb-6">{icon}</div>
 
-      <h3 className="text-white text-[24px] font-bold mb-4">
-        {title}
-      </h3>
+      <h3 className="text-white text-[24px] font-bold mb-4">{title}</h3>
 
-      <p className="text-white/70 leading-[30px]">
-        {text}
-      </p>
+      <p className="text-white/70 leading-[30px]">{text}</p>
     </div>
   );
 }
