@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./assets/components/Header";
 import Footer from "./assets/components/Footer";
@@ -23,6 +24,12 @@ import Blogs from "./pages/Blogs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
   return (
     <>
       <Header />

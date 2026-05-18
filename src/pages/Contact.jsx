@@ -1,28 +1,79 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { PhoneCall, MapPin } from "lucide-react";
 import ContactBanner from "./images/contact.png";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_phone: "",
+    service: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        "service_wx1jai4",
+        "template_6aqmtyr",
+        {
+          user_name: formData.user_name,
+          user_email: formData.user_email,
+          user_phone: formData.user_phone,
+          service: formData.service,
+          message: formData.message,
+        },
+        "rOj0SI81v4KfxkduV"
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({
+            user_name: "",
+            user_email: "",
+            user_phone: "",
+            service: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log("EMAILJS ERROR:", error);
+          alert(error.text || "Something went wrong. Please try again.");
+        }
+      );
+  };
+
   return (
-    <div className="font-['Roboto'] bg-[#f5f7fb] overflow-x-hidden" style={{ fontFamily: 'Roboto, sans-serif' }}>
+    <div
+      className="font-['Roboto'] bg-[#f5f7fb] overflow-x-hidden"
+      style={{ fontFamily: "Roboto, sans-serif" }}
+    >
       <section className="relative min-h-[320px] md:min-h-[500px] overflow-hidden flex items-center justify-center">
         <img
           src={ContactBanner}
           className="absolute inset-0 w-full h-full object-cover brightness-105 contrast-110 saturate-125"
-          alt=""
+          alt="Contact Banner"
         />
 
         <div className="absolute inset-0 bg-[#081b3a]/55" />
 
         <div className="relative z-10 h-full flex items-center justify-center">
           <div className="text-center px-6">
-            
-
             <h1 className="relative text-white text-[46px] md:text-[64px] font-black leading-tight">
               Contact
             </h1>
           </div>
         </div>
-        
       </section>
 
       <section className="py-24 bg-[#f5f7fb]">
@@ -43,7 +94,9 @@ function Contact() {
               title="Address - Head Quarters"
               text={
                 <>
-                  No.33 , Tingkat Satu, Jalan Kelang Lama Square 1, Kelang Lama Square, 09000 Kulim, Kedah.<br />
+                  No.33 , Tingkat Satu, Jalan Kelang Lama Square 1, Kelang Lama
+                  Square, 09000 Kulim, Kedah.
+                  <br />
                   info@lionsglobalservices.com
                 </>
               }
@@ -54,10 +107,14 @@ function Contact() {
               title="Contact"
               text={
                 <>
-                  Monday-Thursday (8:00am - 6:00pm) | Friday (8:00am - 5:00pm)<br />
-                  Saturday & Sunday Closed<br />
-                  lionsglobalservices@gmail.com<br />
-                  Whatsapp :+60 16-4854506<br />
+                  Monday-Thursday (8:00am - 6:00pm) | Friday (8:00am - 5:00pm)
+                  <br />
+                  Saturday & Sunday Closed
+                  <br />
+                  lionsglobalservices@gmail.com
+                  <br />
+                  Whatsapp : +60 16-4854506
+                  <br />
                   Landline : +60-45522076
                 </>
               }
@@ -91,44 +148,72 @@ function Contact() {
                 Request A Quote
               </h3>
 
-              <form className="space-y-6">
+              <form onSubmit={sendEmail} className="space-y-6">
                 <input
                   type="text"
+                  name="user_name"
+                  value={formData.user_name}
+                  onChange={handleChange}
                   placeholder="Full Name"
+                  required
                   className="w-full h-[65px] bg-[#f5f7fb] rounded-2xl px-6 text-[#081b3a] outline-none"
                 />
 
                 <input
                   type="email"
+                  name="user_email"
+                  value={formData.user_email}
+                  onChange={handleChange}
                   placeholder="Email Address"
+                  required
                   className="w-full h-[65px] bg-[#f5f7fb] rounded-2xl px-6 text-[#081b3a] outline-none"
                 />
 
                 <input
-                  type="text"
+                  type="tel"
+                  name="user_phone"
+                  value={formData.user_phone}
+                  onChange={handleChange}
                   placeholder="Phone Number"
+                  required
                   className="w-full h-[65px] bg-[#f5f7fb] rounded-2xl px-6 text-[#081b3a] outline-none"
                 />
 
-                <select className="w-full h-[65px] bg-[#f5f7fb] rounded-2xl px-6 text-[#081b3a] outline-none">
-                  <option>Select Service</option>
-                  <option>Scaffolding Works</option>
-                  <option>Insulation Works</option>
-                  <option>Safety Net</option>
-                  <option>Building Construction</option>
-                  <option>Supply Of Man Power</option>
-                  <option>Security Supply</option>
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  required
+                  className="w-full h-[65px] bg-[#f5f7fb] rounded-2xl px-6 text-[#081b3a] outline-none"
+                >
+                  <option value="" disabled>
+                    Select Service
+                  </option>
+                  <option value="Scaffolding Works">Scaffolding Works</option>
+                  <option value="Insulation Works">Insulation Works</option>
+                  <option value="Safety Net">Safety Net</option>
+                  <option value="Building Construction">
+                    Building Construction
+                  </option>
+                  <option value="Supply Of Man Power">
+                    Supply Of Man Power
+                  </option>
+                  <option value="Security Supply">Security Supply</option>
                 </select>
 
                 <textarea
                   rows="5"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Your Message"
+                  required
                   className="w-full bg-[#f5f7fb] rounded-2xl px-6 py-5 text-[#081b3a] outline-none"
                 />
 
                 <button
-                  type="button"
-                  className="w-full h-[65px] bg-[#ff7a00] text-white rounded-2xl font-bold text-[18px] hover:bg-[#e66e00] transition"
+                  type="submit"
+                  className="w-full h-[65px] bg-[#ff7a00] text-white rounded-2xl font-bold text-[18px] hover:bg-[#e66e00] transition duration-300"
                 >
                   Submit Request
                 </button>
@@ -172,7 +257,6 @@ function StatCard({ number, text }) {
   return (
     <div className="bg-white rounded-[24px] p-8 shadow-lg">
       <h3 className="text-[#ff7a00] text-[42px] font-black">{number}</h3>
-
       <p className="text-[#081b3a] font-semibold mt-2">{text}</p>
     </div>
   );

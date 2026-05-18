@@ -26,7 +26,7 @@ function Gallery() {
   return (
     <div className="font-['Roboto'] bg-[#f6f8fc] overflow-x-hidden" style={{ fontFamily: "Roboto, sans-serif" }}>
       <section
-        className="relative py-32 overflow-hidden bg-cover bg-center"
+        className="relative py-50 overflow-hidden bg-cover bg-center"
         style={{
           backgroundImage:
             'linear-gradient(120deg, rgba(8,27,58,0.96), rgba(8,27,58,0.76)), url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=90&w=2200&auto=format&fit=crop")',
@@ -34,18 +34,13 @@ function Gallery() {
       >
       <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <div className="max-w-[760px]">
-            <p className="text-[#ff7a00] uppercase tracking-[6px] font-bold mb-5">
-              Lions Global Services
-            </p>
+          
 
             <h1 className="text-white text-[46px] md:text-[55px] font-black leading-tight">
               Project Gallery
             </h1>
 
-            <p className="text-white/80 text-[18px] md:text-[21px] leading-[36px] mt-8">
-              A look at our industrial, construction, scaffolding, insulation,
-              and safety-focused work across project sites.
-            </p>
+           
           </div>
         </div>
       </section>
@@ -93,15 +88,6 @@ function GalleryCard({ image, index }) {
 
       <div className="absolute inset-0 translate-y-6 bg-[#ff7a00]/0 transition duration-500 group-hover:translate-y-0 group-hover:bg-[#ff7a00]/10" />
 
-      <div className="absolute left-6 right-6 bottom-6 translate-y-4 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-        <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#ff7a00] text-white font-black shadow-lg">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <h3 className="text-white text-[24px] font-black mt-4">
-          {image.title}
-        </h3>
-      </div>
     </article>
   );
 }
