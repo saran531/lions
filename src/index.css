@@ -132,6 +132,37 @@ section {
 }
 
 @media (max-width: 767px) {
+  .about-direction-grid {
+    gap: 2.75rem !important;
+  }
+
+  .about-direction-card {
+    width: min(100%, 290px) !important;
+    max-width: 290px !important;
+    margin-inline: auto;
+  }
+
+  .about-direction-card > div:first-child {
+    inset: 0.45rem !important;
+  }
+
+  .about-direction-card h3 {
+    font-size: clamp(1.55rem, 8vw, 2rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .about-direction-card p {
+    max-width: 210px !important;
+    font-size: 0.875rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .about-leadership-watermark {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.64)), var(--leadership-logo) !important;
+    background-position: center 44% !important;
+    background-size: min(620px, 145vw) auto !important;
+  }
+
   [class*="h-[75vh]"] {
     height: 620px !important;
     min-height: 560px;
@@ -463,5 +494,16 @@ section {
 
   .mobile-overview-panel .mobile-overview-clone table {
     table-layout: fixed;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body,
+  #root,
+  *,
+  *::before,
+  *::after {
+    cursor: url("./pages/images/mouse-small.png") 2 2, auto !important;
   }
 }
