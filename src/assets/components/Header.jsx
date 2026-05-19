@@ -47,20 +47,20 @@ function Header() {
 
   return (
     <header className="w-full bg-[#061b3a] text-white sticky top-0 z-50 shadow-md border-b-4 border-[#ff7a00]">
-      <div className="max-w-[1600px] mx-auto h-[76px] sm:h-[88px] lg:h-[100px] flex items-center justify-between relative">
+      <div className="max-w-[1600px] mx-auto h-[76px] sm:h-[88px] lg:h-[92px] xl:h-[100px] flex items-center justify-between relative">
         <Link
           to="/"
-          className="h-full w-[190px] sm:w-[230px] lg:w-[280px] bg-white flex items-center justify-center px-4 sm:px-6 lg:px-8"
+          className="h-full w-[190px] sm:w-[230px] lg:w-[220px] xl:w-[280px] bg-white flex items-center justify-center px-4 sm:px-6 lg:px-5 xl:px-8"
           onClick={closeMobileMenu}
         >
           <img
             src={logo}
             alt="Company Logo"
-            className="w-[165px] sm:w-[200px] lg:w-[230px] h-[66px] sm:h-[78px] lg:h-[90px] object-contain"
+            className="w-[165px] sm:w-[200px] lg:w-[190px] xl:w-[230px] h-[66px] sm:h-[78px] lg:h-[82px] xl:h-[90px] object-contain"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-10 text-[18px] font-bold px-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-10 text-[15px] xl:text-[18px] font-bold px-4 xl:px-8">
           <Link to="/" className="hover:text-[#ff7a00]">
             Home
           </Link>
@@ -123,7 +123,7 @@ function Header() {
 
         <Link
           to="/contact"
-          className="hidden lg:inline-flex bg-[#ff7a00] px-10 py-4 rounded-full text-[18px] font-bold hover:bg-white hover:text-[#061b3a] transition mr-10"
+          className="hidden lg:inline-flex bg-[#ff7a00] px-6 xl:px-10 py-3.5 xl:py-4 rounded-full text-[15px] xl:text-[18px] font-bold hover:bg-white hover:text-[#061b3a] transition mr-4 xl:mr-10 whitespace-nowrap"
         >
           Get Quote
         </Link>

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+html,
+body,
+#root,
+*,
+*::before,
+*::after {
+  cursor: url("./pages/images/mouse-small.png") 2 2, auto !important;
+}
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
@@ -8,6 +17,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -19,6 +31,7 @@ body {
   color: #061b3a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body,
@@ -44,6 +57,26 @@ iframe {
   max-width: 100%;
 }
 
+img {
+  display: block;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+iframe {
+  border: 0;
+}
+
 body.mobile-nav-open {
   overflow: hidden;
 }
@@ -61,6 +94,17 @@ th {
   overflow-wrap: anywhere;
 }
 
+section {
+  min-width: 0;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .backdrop-blur-md,
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
 @media (max-width: 1023px) {
   [class*="py-32"],
   [class*="py-28"],
@@ -72,6 +116,12 @@ th {
   [class*="px-16"] {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
+  }
+
+  [class*="p-14"],
+  [class*="p-12"],
+  [class*="p-10"] {
+    padding: 2rem !important;
   }
 
   [class*="gap-16"],
@@ -87,6 +137,11 @@ th {
     min-height: 560px;
   }
 
+  [class*="min-h-[500px]"],
+  [class*="min-h-[430px]"] {
+    min-height: 340px !important;
+  }
+
   [class*="h-[430px]"],
   [class*="h-[420px]"] {
     height: 340px !important;
@@ -96,7 +151,8 @@ th {
   [class*="h-[620px]"],
   [class*="h-[560px]"],
   [class*="h-[500px]"] {
-    height: 360px !important;
+    height: auto !important;
+    min-height: 360px !important;
   }
 
   [class*="h-[390px]"],
@@ -108,7 +164,8 @@ th {
   [class*="h-[290px]"],
   [class*="h-[260px]"],
   [class*="h-[220px]"] {
-    height: 280px !important;
+    height: auto !important;
+    min-height: 280px !important;
   }
 
   [class*="text-[65px]"],
@@ -155,7 +212,7 @@ th {
   [class*="leading-[34px]"],
   [class*="leading-[32px]"],
   [class*="leading-[30px]"] {
-    line-height: 1.75 !important;
+    line-height: 1.65 !important;
   }
 
   [class*="tracking-[8px]"],
@@ -170,6 +227,12 @@ th {
   [class*="p-12"],
   [class*="p-10"] {
     padding: 1.5rem !important;
+  }
+
+  [class*="text-[20px]"],
+  [class*="text-[19px]"],
+  [class*="text-[18px]"] {
+    line-height: 1.7 !important;
   }
 
   [class*="rounded-[46px]"],
@@ -200,6 +263,13 @@ th {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
   }
+
+  input,
+  textarea,
+  select,
+  button {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -207,6 +277,13 @@ th {
   [class*="px-4"] {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
+  }
+
+  [class*="px-10"],
+  [class*="px-9"],
+  [class*="px-8"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 
   [class*="py-24"],
@@ -240,6 +317,20 @@ th {
   [class*="mb-14"] {
     margin-bottom: 2.5rem !important;
   }
+
+  [class*="tracking-[8px]"],
+  [class*="tracking-[6px]"],
+  [class*="tracking-[5px]"],
+  [class*="tracking-[4px]"],
+  [class*="tracking-[3px]"] {
+    letter-spacing: 0.08em !important;
+  }
+
+  [class*="rounded-[24px]"],
+  [class*="rounded-[22px]"],
+  [class*="rounded-[18px]"] {
+    border-radius: 1rem !important;
+  }
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -263,6 +354,21 @@ th {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .mobile-overview-backdrop {
   position: fixed;
   inset: 0;
@@ -273,6 +379,7 @@ th {
   background: rgb(6 27 58 / 0.72);
   padding: 1rem;
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .mobile-overview-shell {

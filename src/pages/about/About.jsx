@@ -8,6 +8,7 @@ import Client7 from "./images/Client7.png";
 import Client8 from "./images/Client8.png";
 import Founder from "./images/Founder.png";
 import AboutBanner from "./images/about.png";
+import LogoWatermark from "./images/logo.png.jpeg";
 
 function About() {
   const clients = [
@@ -110,81 +111,41 @@ function About() {
       </p>
     </div>
 
-    <div className="grid lg:grid-cols-3 gap-10">
-      
-      {/* CARD 1 */}
-      <div className="bg-[#f3f3f3] rounded-[36px] p-12 min-h-[420px] shadow-2xl flex flex-col justify-start">
-        <span
-          className="text-[#ff7a00] font-black"
-          style={{
-            fontSize: "80px",
-            lineHeight: "75px",
-          }}
-        >
-          01
-        </span>
+    <div className="grid gap-10 md:grid-cols-3 md:gap-8 xl:gap-12 justify-items-center">
+      <DirectionCard
+        no="01"
+        title="Mission"
+        text="Thrive to Exceed Our Customers Expectations & Satisfactions by Our Products & Services."
+      />
 
-        <h3 className="text-[#081b3a] text-[45px] font-black mt-10 leading-none">
-          Mission
-        </h3>
+      <DirectionCard
+        no="02"
+        title="Vision"
+        text="To Be Local Leader in Providing Quality & Excellent Services to Various Industries."
+        featured
+      />
 
-        <p className="text-[#5b6475] text-[22px] leading-[42px] mt-10 font-medium">
-          Thrive to Exceed Our Customers Expectations & Satisfactions by Our
-          Products & Services.
-        </p>
-      </div>
-
-      {/* CARD 2 */}
-      <div className="bg-[#ff7a00] rounded-[36px] p-12 min-h-[420px] shadow-2xl flex flex-col justify-start lg:translate-y-10">
-        <span
-          className="text-white/35 font-black"
-          style={{
-            fontSize: "80px",
-            lineHeight: "75px",
-          }}
-        >
-          02
-        </span>
-
-        <h3 className="text-white text-[45px] font-black mt-10 leading-none">
-          Vision
-        </h3>
-
-        <p className="text-white/95 text-[22px] leading-[42px] mt-10 font-medium">
-          To Be Local Leader in Providing Quality & Excellent Services to
-          Various Industries.
-        </p>
-      </div>
-
-      {/* CARD 3 */}
-      <div className="bg-[#f3f3f3] rounded-[36px] p-12 min-h-[420px] shadow-2xl flex flex-col justify-start">
-        <span
-          className="text-[#ff7a00] font-black"
-          style={{
-            fontSize: "80px",
-            lineHeight: "75px",
-          }}
-        >
-          03
-        </span>
-
-        <h3 className="text-[#081b3a] text-[45px] font-black mt-10 leading-none">
-          Strategy
-        </h3>
-
-        <p className="text-[#5b6475] text-[22px] leading-[42px] mt-10 font-medium">
-          We are looking forward to capitalize on growth opportunities in the
-          market to expand our business and customer base.
-        </p>
-      </div>
+      <DirectionCard
+        no="03"
+        title="Strategy"
+        text="We are looking forward to capitalize on growth opportunities in the market to expand our business and customer base."
+      />
     </div>
   </div>
 </section>
 
 
       {/* FOUNDER */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-16">
+      <section
+        className="relative py-24 bg-white overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url(${LogoWatermark})`,
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "min(1250px, 95vw) auto",
+        }}
+      >
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
           <div className="text-center mb-16">
             <p className="text-[#ff7a00] uppercase tracking-[6px] font-bold mb-4">
               Leadership
@@ -364,6 +325,67 @@ function ProcessCard({ no, title, text }) {
       <div>
         <h3 className="text-white text-[23px] font-bold">{title}</h3>
         <p className="text-white/75 mt-2 leading-[28px]">{text}</p>
+      </div>
+    </div>
+  );
+}
+
+function DirectionCard({ title, text, featured = false }) {
+  return (
+    <div
+      tabIndex={0}
+      className={`group relative aspect-square w-full max-w-[360px] rounded-full outline-none [perspective:1000px] ${
+        featured ? "md:translate-y-10" : ""
+      }`}
+    >
+      <div
+        className={`absolute inset-0 rounded-full transition-all duration-500 ease-out group-hover:shadow-[0_0_0_0_rgba(255,255,255,0.8),0_32px_70px_rgba(0,0,0,0.36)] group-focus-visible:shadow-[0_0_0_0_rgba(255,255,255,0.8),0_32px_70px_rgba(0,0,0,0.36)] ${
+          featured
+            ? "shadow-[0_0_0_18px_rgba(255,255,255,0.14),0_24px_60px_rgba(0,0,0,0.3)]"
+            : "shadow-[0_0_0_18px_rgba(255,122,0,0.18),0_24px_60px_rgba(0,0,0,0.3)]"
+        }`}
+      />
+
+      <div className="absolute inset-0 rounded-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] group-hover:[transform:rotate3d(0,1,0,-180deg)] group-focus-visible:[transform:rotate3d(0,1,0,-180deg)]">
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-full p-8 text-center [backface-visibility:hidden] ${
+            featured
+              ? "bg-[#ff7a00] text-white"
+              : "bg-[#f3f3f3] text-[#081b3a]"
+          }`}
+        >
+          <span
+            className={`absolute -right-12 -top-12 h-44 w-44 rounded-full ${
+              featured ? "bg-white/15" : "bg-[#ff7a00]/12"
+            }`}
+          />
+          <span
+            className={`absolute -bottom-16 -left-12 h-48 w-48 rounded-full ${
+              featured ? "bg-[#081b3a]/18" : "bg-white/70"
+            }`}
+          />
+          <h3 className="relative text-[38px] font-black leading-none md:text-[32px] lg:text-[40px] xl:text-[48px]">
+            {title}
+          </h3>
+        </div>
+
+        <div
+          className={`absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-full p-8 text-center text-white [backface-visibility:hidden] [transform:rotateY(180deg)] ${
+            featured ? "bg-[#081b3a]" : "bg-[#ff7a00]"
+          }`}
+        >
+          <span className="absolute inset-5 rounded-full border border-white/25" />
+          <span className="absolute -left-14 top-10 h-40 w-40 rounded-full bg-white/10" />
+          <span className="absolute -right-10 bottom-8 h-32 w-32 rounded-full bg-[#081b3a]/20" />
+
+          <h3 className="relative text-[25px] font-black leading-none md:text-[22px] lg:text-[27px] xl:text-[31px]">
+            {title}
+          </h3>
+          <span className="relative my-5 h-[2px] w-16 rounded-full bg-white/60" />
+          <p className="relative max-w-[260px] text-[15px] font-semibold leading-[26px] md:text-[13px] md:leading-[23px] lg:text-[15px] lg:leading-[27px] xl:text-[17px] xl:leading-[30px]">
+            {text}
+          </p>
+        </div>
       </div>
     </div>
   );

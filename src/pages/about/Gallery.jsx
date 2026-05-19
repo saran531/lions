@@ -26,7 +26,7 @@ function Gallery() {
   return (
     <div className="font-['Roboto'] bg-[#f6f8fc] overflow-x-hidden" style={{ fontFamily: "Roboto, sans-serif" }}>
       <section
-        className="relative py-50 overflow-hidden bg-cover bg-center"
+        className="relative min-h-[300px] md:min-h-[430px] overflow-hidden bg-cover bg-center flex items-center justify-center"
         style={{
           backgroundImage:
             'linear-gradient(120deg, rgba(8,27,58,0.96), rgba(8,27,58,0.76)), url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=90&w=2200&auto=format&fit=crop")',
