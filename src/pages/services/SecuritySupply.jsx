@@ -126,6 +126,44 @@ function SecuritySupply() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What security personnel do you provide?"
+                answer="We supply trained security guards, site security personnel, access control staff, event security teams, and facility security professionals for various industries."
+              />
+
+              <FaqItem
+                question="2. Are your security personnel trained and experienced?"
+                answer="Yes. Our security personnel undergo proper training and are selected based on their experience, professionalism, and ability to handle security responsibilities effectively."
+              />
+
+              <FaqItem
+                question="3. Do you provide security services for both short-term and long-term requirements?"
+                answer="Yes. We offer flexible security staffing solutions for temporary events, project-based assignments, and long-term facility security needs."
+              />
+
+              <FaqItem
+                question="4. Which sectors do you serve?"
+                answer="We provide security manpower for construction sites, commercial buildings, residential communities, industrial facilities, warehouses, retail establishments, and special events."
+              />
+
+              <FaqItem
+                question="5. How can I request security personnel for my site?"
+                answer="Simply share your security requirements, location, number of personnel needed, and duration of service. Our team will recommend a suitable security solution and provide a customized quotation."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -140,6 +178,19 @@ function SecurityCard({ icon, title, text }) {
       <h3 className="text-[#081b3a] text-[28px] font-black">{title}</h3>
 
       <p className="text-[#6b7280] mt-5 leading-[32px]">{text}</p>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

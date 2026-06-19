@@ -153,6 +153,44 @@ function ScaffoldingWorks() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What types of scaffolding services do you offer?"
+                answer="We provide scaffolding solutions for residential, commercial, industrial, and infrastructure projects, including erection, maintenance, and dismantling."
+              />
+
+              <FaqItem
+                question="2. Is your scaffolding system safe and compliant?"
+                answer="Yes. All scaffolding structures are installed following industry safety standards and undergo regular inspections to ensure maximum safety."
+              />
+
+              <FaqItem
+                question="3. Do you provide scaffolding on a rental basis?"
+                answer="Yes. We offer flexible rental options for short-term and long-term projects based on your requirements."
+              />
+
+              <FaqItem
+                question="4. How long does it take to install scaffolding?"
+                answer="The installation time depends on the project size and complexity. Our team ensures timely setup while maintaining strict safety standards."
+              />
+
+              <FaqItem
+                question="5. How can I request a quote for scaffolding services?"
+                answer="You can contact our team with your project details, location, and requirements. We will provide a customized quotation tailored to your project needs."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -168,6 +206,19 @@ function TypeCard({ title, text }) {
         <h3 className="text-[#081b3a] text-[22px] font-black">{title}</h3>
         <p className="text-[#6b7280] mt-3 leading-[28px]">{text}</p>
       </div>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

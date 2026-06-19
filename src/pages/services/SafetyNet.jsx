@@ -67,6 +67,57 @@ function SafetyNet() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What are safety nets used for?"
+                answer="Safety nets are designed to prevent falls, protect workers, and provide an additional layer of safety at construction sites, industrial facilities, and maintenance projects."
+              />
+
+              <FaqItem
+                question="2. Where can safety nets be installed?"
+                answer="Safety nets can be installed in construction buildings, warehouses, factories, bridges, event venues, and other elevated work areas requiring fall protection."
+              />
+
+              <FaqItem
+                question="3. Do you provide customized safety net solutions?"
+                answer="Yes. We assess your site requirements and provide customized safety net installations based on the project size, height, and safety needs."
+              />
+
+              <FaqItem
+                question="4. Are your safety nets durable and compliant with safety standards?"
+                answer="Yes. We use high-quality materials and follow industry safety standards to ensure reliable protection and long-term performance."
+              />
+
+              <FaqItem
+                question="5. How can I get a quote for safety net installation?"
+                answer="Simply contact us with your project details and site requirements. Our team will evaluate your needs and provide a customized quotation."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

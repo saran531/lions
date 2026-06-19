@@ -105,9 +105,7 @@ function Project() {
               Project Track Record
             </h2>
 
-            <p className="text-[#6b7280] mt-5 text-[18px]">
-              Complete project record from the uploaded Excel sheet.
-            </p>
+           
           </div>
 
           <div ref={tableCardRef} className="bg-white rounded-[32px] shadow-2xl overflow-hidden border border-gray-200">

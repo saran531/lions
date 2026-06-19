@@ -137,6 +137,44 @@ function InsulationWorks() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What insulation services do you provide?"
+                answer="We offer thermal, acoustic, and industrial insulation solutions for commercial, industrial, and residential applications."
+              />
+
+              <FaqItem
+                question="2. What are the benefits of insulation?"
+                answer="Proper insulation helps improve energy efficiency, reduce heat loss or gain, lower utility costs, and enhance indoor comfort."
+              />
+
+              <FaqItem
+                question="3. Do you provide insulation for industrial facilities?"
+                answer="Yes. We provide insulation solutions for factories, plants, pipelines, tanks, ducts, and other industrial systems."
+              />
+
+              <FaqItem
+                question="4. How do I know which insulation solution is right for my project?"
+                answer="Our team assesses your project requirements, operating conditions, and energy goals to recommend the most suitable insulation system."
+              />
+
+              <FaqItem
+                question="5. How can I get a quote for insulation works?"
+                answer="Simply contact us with your project details, and our team will provide a customized solution and competitive quotation."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -152,6 +190,19 @@ function TypeCard({ title, text }) {
         <h3 className="text-[#081b3a] text-[22px] font-black">{title}</h3>
         <p className="text-[#6b7280] mt-3 leading-[28px]">{text}</p>
       </div>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

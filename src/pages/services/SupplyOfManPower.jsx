@@ -115,6 +115,44 @@ function SupplyOfManPower() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What manpower supply services do you provide?"
+                answer="We provide skilled, semi-skilled, and unskilled manpower for construction, industrial, commercial, maintenance, and facility management projects."
+              />
+
+              <FaqItem
+                question="2. Can you supply manpower for short-term and long-term projects?"
+                answer="Yes. We offer flexible manpower solutions for both temporary assignments and long-term workforce requirements."
+              />
+
+              <FaqItem
+                question="3. How do you ensure the quality of the workforce provided?"
+                answer="Our manpower is carefully screened, qualified, and assigned based on the specific skills and experience required for each project."
+              />
+
+              <FaqItem
+                question="4. What industries do you serve?"
+                answer="We support a wide range of industries, including construction, manufacturing, oil & gas, facilities management, logistics, and commercial sectors."
+              />
+
+              <FaqItem
+                question="5. How can I request manpower for my project?"
+                answer="Simply share your workforce requirements, project location, and duration with our team. We will provide suitable manpower solutions tailored to your needs."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -129,6 +167,19 @@ function CategoryCard({ title, text }) {
       <h3 className="text-[#081b3a] text-[28px] font-black">{title}</h3>
 
       <p className="text-[#6b7280] mt-5 leading-[32px]">{text}</p>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

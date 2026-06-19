@@ -142,6 +142,44 @@ function BuildingConstructionWorks() {
           </div>
         </div>
       </section>
+
+      {/* FAQ QUESTIONS */}
+      <section className="py-24 bg-[#f5f7fb]">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-16">
+          <div className="bg-white rounded-[36px] p-8 md:p-12 shadow-xl border-l-[8px] border-[#ff7a00]">
+            <h2 className="text-[#081b3a] text-[40px] md:text-[38px] font-black leading-tight mb-10">
+              Frequently Asked Questions
+            </h2>
+
+            <div className="space-y-9">
+              <FaqItem
+                question="1. What types of building construction services do you offer?"
+                answer="We provide residential, commercial, industrial, and infrastructure construction services, from planning and foundation work to project completion."
+              />
+
+              <FaqItem
+                question="2. Do you handle both new construction and renovation projects?"
+                answer="Yes. We undertake new building construction, expansions, remodeling, renovation, and structural improvement projects."
+              />
+
+              <FaqItem
+                question="3. How do you ensure quality and safety during construction?"
+                answer="Our team follows industry best practices, quality control procedures, and safety standards throughout every stage of the project."
+              />
+
+              <FaqItem
+                question="4. How long does a construction project take?"
+                answer="Project timelines vary depending on the size, complexity, and scope of work. We provide a detailed schedule before project commencement."
+              />
+
+              <FaqItem
+                question="5. How can I get a quotation for my construction project?"
+                answer="Simply share your project requirements, location, and specifications with our team. We will assess your needs and provide a customized quotation."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -156,6 +194,19 @@ function CategoryCard({ title, text }) {
       <h3 className="text-[#081b3a] text-[28px] font-black">{title}</h3>
 
       <p className="text-[#6b7280] mt-5 leading-[32px]">{text}</p>
+    </div>
+  );
+}
+
+function FaqItem({ question, answer }) {
+  return (
+    <div>
+      <h3 className="text-[#081b3a] text-[22px] md:text-[24px] font-black leading-[34px]">
+        {question}
+      </h3>
+      <p className="text-[#5f6b7a] text-[18px] md:text-[20px] leading-[32px] md:leading-[36px] mt-4">
+        {answer}
+      </p>
     </div>
   );
 }

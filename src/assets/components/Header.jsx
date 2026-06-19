@@ -6,9 +6,11 @@ import logo from "../images/logo.png.jpeg";
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
+
   const location = useLocation();
 
   const servicesLinks = [
+    ["All Services", "/services"],
     ["Scaffolding Works", "/services/scaffolding-works"],
     ["Insulation Works", "/services/insulation-works"],
     ["Safety Net", "/services/safety-net"],
@@ -18,23 +20,28 @@ function Header() {
   ];
 
   const projectLinks = [
+    ["All Projects", "/project"],
     ["Scaffolding Projects", "/projects/scaffolding-projects"],
     ["Insulation Projects", "/projects/insulation-projects"],
     ["Safety Catch Net Projects", "/projects/safety-catch-net-projects"],
   ];
 
-  const closeMobileMenu = () => setMobileOpen(false);
+  const aboutLinks = [
+    ["About Company", "/about"],
+    ["Gallery", "/about/gallery"],
+  ];
+
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setOpenGroup(null);
+  };
+
   const toggleGroup = (group) => {
-    setOpenGroup((current) => (current === group ? null : group));
+    setOpenGroup((prev) => (prev === group ? null : group));
   };
 
   useEffect(() => {
-    const timeoutId = window.setTimeout(() => {
-      setMobileOpen(false);
-      setOpenGroup(null);
-    }, 0);
-
-    return () => window.clearTimeout(timeoutId);
+    closeMobileMenu();
   }, [location.pathname]);
 
   useEffect(() => {
@@ -46,163 +53,186 @@ function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="w-full bg-[#061b3a] text-white sticky top-0 z-50 shadow-md border-b-4 border-[#ff7a00]">
-      <div className="max-w-[1600px] mx-auto h-[76px] sm:h-[88px] lg:h-[92px] xl:h-[100px] flex items-center justify-between relative">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-[#ff7a00] bg-[#061b3a] text-white shadow-lg">
+      <div className="mx-auto flex h-[76px] sm:h-[88px] lg:h-[100px] max-w-[1600px] items-center justify-between">
+        {/* LOGO */}
         <Link
           to="/"
-          className="h-full w-[190px] sm:w-[230px] lg:w-[220px] xl:w-[280px] bg-white flex items-center justify-center px-4 sm:px-6 lg:px-5 xl:px-8"
           onClick={closeMobileMenu}
+          className="flex h-full w-[190px] sm:w-[230px] lg:w-[280px] items-center justify-center bg-white px-4 sm:px-6 lg:px-8"
         >
           <img
             src={logo}
             alt="Company Logo"
-            className="w-[165px] sm:w-[200px] lg:w-[190px] xl:w-[230px] h-[66px] sm:h-[78px] lg:h-[82px] xl:h-[90px] object-contain"
+            className="h-[66px] sm:h-[78px] lg:h-[90px] w-[165px] sm:w-[200px] lg:w-[230px] object-contain"
           />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-10 text-[15px] xl:text-[18px] font-bold px-4 xl:px-8">
-          <Link to="/" className="hover:text-[#ff7a00]">
+        {/* DESKTOP MENU */}
+        <nav className="hidden items-center gap-10 px-8 text-[18px] font-bold lg:flex">
+          <Link to="/" className="hover:text-[#ff7a00] transition">
             Home
           </Link>
 
-          <div className="relative group">
-            <Link to="/about" className="hover:text-[#ff7a00]">
-              About ▾
-            </Link>
-            <div className="absolute left-0 top-full hidden group-hover:block w-[220px] bg-white text-[#061b3a] shadow-lg">
+          {/* ABOUT */}
+          <DesktopDropdown title="About">
+            {aboutLinks.map(([label, path]) => (
               <Link
-                to="/about/gallery"
+                key={path}
+                to={path}
                 className="block px-5 py-3 hover:bg-[#ff7a00] hover:text-white"
               >
-                Gallery
+                {label}
               </Link>
-            </div>
-          </div>
+            ))}
+          </DesktopDropdown>
 
-          <div className="relative group">
-            <Link to="/services" className="hover:text-[#ff7a00]">
-              Lions Services ▾
-            </Link>
-            <div className="absolute left-0 top-full hidden group-hover:block w-[320px] bg-white text-[#061b3a] shadow-lg">
-              {servicesLinks.map(([label, path]) => (
-                <Link
-                  key={path}
-                  className="block px-5 py-3 hover:bg-[#ff7a00] hover:text-white"
-                  to={path}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* SERVICES */}
+          <DesktopDropdown title="Lions Services">
+            {servicesLinks.map(([label, path]) => (
+              <Link
+                key={path}
+                to={path}
+                className="block px-5 py-3 hover:bg-[#ff7a00] hover:text-white"
+              >
+                {label}
+              </Link>
+            ))}
+          </DesktopDropdown>
 
-          <div className="relative group">
-            <Link to="/project" className="hover:text-[#ff7a00]">
-              Project Lions ▾
-            </Link>
-            <div className="absolute left-0 top-full hidden group-hover:block w-[320px] bg-white text-[#061b3a] shadow-lg">
-              {projectLinks.map(([label, path]) => (
-                <Link
-                  key={path}
-                  className="block px-5 py-3 hover:bg-[#ff7a00] hover:text-white"
-                  to={path}
-                >
-                  {label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          {/* PROJECTS */}
+          <DesktopDropdown title="Project Lions">
+            {projectLinks.map(([label, path]) => (
+              <Link
+                key={path}
+                to={path}
+                className="block px-5 py-3 hover:bg-[#ff7a00] hover:text-white"
+              >
+                {label}
+              </Link>
+            ))}
+          </DesktopDropdown>
 
-          <Link to="/contact" className="hover:text-[#ff7a00]">
+          <Link to="/contact" className="hover:text-[#ff7a00] transition">
             Contact
           </Link>
-          <Link to="/blogs" className="hover:text-[#ff7a00]">
+
+          <Link to="/blogs" className="hover:text-[#ff7a00] transition">
             Blogs
           </Link>
         </nav>
 
+        {/* DESKTOP BUTTON */}
         <Link
           to="/contact"
-          className="hidden lg:inline-flex bg-[#ff7a00] px-6 xl:px-10 py-3.5 xl:py-4 rounded-full text-[15px] xl:text-[18px] font-bold hover:bg-white hover:text-[#061b3a] transition mr-4 xl:mr-10 whitespace-nowrap"
+          className="mr-10 hidden rounded-full bg-[#ff7a00] px-10 py-4 text-[18px] font-bold transition hover:bg-white hover:text-[#061b3a] lg:inline-flex"
         >
           Get Quote
         </Link>
 
+        {/* MOBILE BUTTON */}
         <button
           type="button"
-          aria-controls="mobile-navigation"
-          aria-expanded={mobileOpen}
-          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 mr-4 sm:mr-6 hover:bg-white/10 transition"
-          onClick={() => setMobileOpen((current) => !current)}
+          onClick={() => setMobileOpen((prev) => !prev)}
+          className="mr-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/5 transition hover:bg-white/10 sm:mr-6 lg:hidden"
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
+      {/* MOBILE MENU */}
       <div
-        id="mobile-navigation"
-        className={`lg:hidden ${mobileOpen ? "block" : "hidden"} absolute left-0 right-0 top-full max-h-[calc(100vh-76px)] overflow-y-auto bg-[#061b3a] border-t border-white/10 shadow-2xl`}
+        className={`lg:hidden ${
+          mobileOpen ? "block" : "hidden"
+        } absolute left-0 right-0 top-full max-h-[calc(100vh-76px)] overflow-y-auto border-t border-white/10 bg-[#061b3a] shadow-2xl`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 space-y-1 text-[16px] sm:text-[17px] font-semibold">
-          <Link to="/" className="block px-4 py-3 rounded-lg hover:bg-white/10" onClick={closeMobileMenu}>
+        <nav className="space-y-1 px-4 py-5 text-[16px] font-semibold">
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className="block rounded-lg px-4 py-3 hover:bg-white/10"
+          >
             Home
           </Link>
 
+          {/* ABOUT */}
           <MobileNavGroup
             title="About"
             open={openGroup === "about"}
             onToggle={() => toggleGroup("about")}
           >
-            <Link to="/about" className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
-              About Company
-            </Link>
-            <Link to="/about/gallery" className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
-              Gallery
-            </Link>
+            {aboutLinks.map(([label, path]) => (
+              <Link
+                key={path}
+                to={path}
+                onClick={closeMobileMenu}
+                className="block rounded-lg px-4 py-3 text-white/85 hover:bg-white/10"
+              >
+                {label}
+              </Link>
+            ))}
           </MobileNavGroup>
 
+          {/* SERVICES */}
           <MobileNavGroup
             title="Lions Services"
             open={openGroup === "services"}
             onToggle={() => toggleGroup("services")}
           >
-            <Link to="/services" className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
-              All Services
-            </Link>
             {servicesLinks.map(([label, path]) => (
-              <Link key={path} to={path} className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
+              <Link
+                key={path}
+                to={path}
+                onClick={closeMobileMenu}
+                className="block rounded-lg px-4 py-3 text-white/85 hover:bg-white/10"
+              >
                 {label}
               </Link>
             ))}
           </MobileNavGroup>
 
+          {/* PROJECTS */}
           <MobileNavGroup
             title="Project Lions"
             open={openGroup === "projects"}
             onToggle={() => toggleGroup("projects")}
           >
-            <Link to="/project" className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
-              Project Track Record
-            </Link>
             {projectLinks.map(([label, path]) => (
-              <Link key={path} to={path} className="block px-4 py-3 rounded-lg text-white/85 hover:bg-white/10" onClick={closeMobileMenu}>
+              <Link
+                key={path}
+                to={path}
+                onClick={closeMobileMenu}
+                className="block rounded-lg px-4 py-3 text-white/85 hover:bg-white/10"
+              >
                 {label}
               </Link>
             ))}
           </MobileNavGroup>
 
-          <Link to="/contact" className="block px-4 py-3 rounded-lg hover:bg-white/10" onClick={closeMobileMenu}>
+          <Link
+            to="/contact"
+            onClick={closeMobileMenu}
+            className="block rounded-lg px-4 py-3 hover:bg-white/10"
+          >
             Contact
           </Link>
-          <Link to="/blogs" className="block px-4 py-3 rounded-lg hover:bg-white/10" onClick={closeMobileMenu}>
+
+          <Link
+            to="/blogs"
+            onClick={closeMobileMenu}
+            className="block rounded-lg px-4 py-3 hover:bg-white/10"
+          >
             Blogs
           </Link>
 
           <Link
             to="/contact"
-            className="block mt-4 w-full text-center bg-[#ff7a00] py-3.5 rounded-full font-bold hover:bg-white hover:text-[#061b3a] transition"
             onClick={closeMobileMenu}
+            className="mt-4 block w-full rounded-full bg-[#ff7a00] py-3.5 text-center font-bold transition hover:bg-white hover:text-[#061b3a]"
           >
             Get Quote
           </Link>
@@ -212,17 +242,36 @@ function Header() {
   );
 }
 
+function DesktopDropdown({ title, children }) {
+  return (
+    <div className="group relative">
+      <button className="flex items-center gap-1 hover:text-[#ff7a00] transition">
+        {title}
+        <ChevronDown className="h-4 w-4" />
+      </button>
+
+      <div className="absolute left-0 top-full hidden min-w-[280px] overflow-hidden rounded-b-xl bg-white text-[#061b3a] shadow-2xl group-hover:block">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function MobileNavGroup({ title, open, onToggle, children }) {
   return (
     <div>
       <button
         type="button"
-        aria-expanded={open}
-        className="flex w-full items-center justify-between px-4 py-3 rounded-lg hover:bg-white/10 text-left font-semibold"
         onClick={onToggle}
+        className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left hover:bg-white/10"
       >
         <span>{title}</span>
-        <ChevronDown className={`h-5 w-5 transition ${open ? "rotate-180" : ""}`} />
+
+        <ChevronDown
+          className={`h-5 w-5 transition ${
+            open ? "rotate-180" : ""
+          }`}
+        />
       </button>
 
       {open && (
