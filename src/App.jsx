@@ -5,7 +5,6 @@ import Header from "./assets/components/Header";
 import Footer from "./assets/components/Footer";
 import MobileOverview from "./assets/components/MobileOverview";
 import ScrollToTop from "./assets/components/ScrollToTop";
-import CustomCursorTrail from "./components/CustomCursorTrail";
 
 import Home from "./pages/Home";
 import About from "./pages/about/About";
@@ -58,7 +57,6 @@ function App() {
 
   return (
     <>
-      <CustomCursorTrail />
       <ScrollToTop />
       <Routes>
         {/* ── Admin Routes (no Header/Footer) ── */}
